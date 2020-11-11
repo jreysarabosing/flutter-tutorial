@@ -19,7 +19,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  FirebaseUser user;
+  User user;
 
   @override
   void initState() {
@@ -30,10 +30,8 @@ class _BodyState extends State<Body> {
   void click() {
     signInWithGoogle().then((user) => {
           this.user = user,
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MyHomePage(user.displayName)))
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => MyHomePage(user)))
         });
   }
 
