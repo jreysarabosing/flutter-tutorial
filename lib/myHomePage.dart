@@ -4,6 +4,7 @@ import 'postList.dart';
 import 'textInputWidget.dart';
 import 'post.dart';
 import 'database.dart';
+import 'auth.dart';
 
 class MyHomePage extends StatefulWidget {
   final User user;
@@ -42,7 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Post Feed')),
+        appBar: AppBar(
+          title: Text('Post Feed'),
+          leading: IconButton(
+            icon: Icon(Icons.exit_to_app),
+            tooltip: 'Sign Out',
+            onPressed: () {
+              signOutGoogle();
+              Navigator.pop(context);
+            },
+          ),
+        ),
         body: Column(children: <Widget>[
           Expanded(child: PostList(this.posts, widget.user)),
           TextInputWidget(this.newPost)
