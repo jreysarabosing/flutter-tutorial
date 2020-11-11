@@ -30,7 +30,7 @@ class _TextInputWidgetState extends State<TextInputWidget> {
         controller: this.controller,
         decoration: InputDecoration(
             prefixIcon: Icon(Icons.message),
-            labelText: "Type a message: ",
+            labelText: "Type a post: ",
             suffixIcon: IconButton(
               icon: Icon(Icons.send),
               splashColor: Colors.yellow,

@@ -19,17 +19,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void newPost(String text) {
     var post = new Post(text, widget.user.displayName);
-    savePost(post);
     post.setId(savePost(post));
     this.setState(() {
       posts.add(post);
     });
   }
 
+  void updatePostFeed() {
+    getAllPosts().then((posts) => {
+          this.setState(() {
+            this.posts = posts;
+          })
+        });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    updatePostFeed();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Message Board')),
+        appBar: AppBar(title: Text('Post Feed')),
         body: Column(children: <Widget>[
           Expanded(child: PostList(this.posts, widget.user)),
           TextInputWidget(this.newPost)
